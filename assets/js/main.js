@@ -63,50 +63,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Formulario de contacto — envío real vía FormSubmit (sin backend propio)
+  // Formulario de contacto — envío real vía FormSubmit
   var form = document.getElementById('contact-form');
+  var successBox = document.getElementById('form-success');
+
+  // Si la URL vuelve con ?enviado=1, mostrar el mensaje de éxito
+  if (window.location.search.indexOf('enviado=1') !== -1 || window.location.search.indexOf('sent=1') !== -1) {
+    if (form) form.style.display = 'none';
+    if (successBox) successBox.classList.add('show');
+  }
+
   if (form) {
     form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
       // Honeypot anti-spam: si el campo oculto viene lleno, es un bot — no enviar.
       var honey = form.querySelector('[name="_honey"]');
-      if (honey && honey.value) return;
+      if (honey && honey.value) {
+        e.preventDefault();
+        return;
+      }
 
-      var success = document.getElementById('form-success');
-      var errorBox = document.getElementById('form-error');
       var btn = form.querySelector('button[type="submit"]');
-      var originalLabel = btn ? btn.textContent : '';
-      if (btn) { btn.disabled = true; btn.textContent = form.dataset.sending || 'Enviando…'; }
-      if (errorBox) errorBox.classList.remove('show');
-
-      var payload = {};
-      new FormData(form).forEach(function (value, key) { payload[key] = value; });
-
-      // El action del <form> apunta a formsubmit.co/<email>; usamos su variante /ajax/
-      // para poder mostrar el mensaje de éxito sin salir del sitio.
-      var ajaxUrl = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
-
-      fetch(ajaxUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error('request-failed');
-          return res.json();
-        })
-        .then(function (data) {
-          if (data && (data.success === 'true' || data.success === true)) {
-            form.style.display = 'none';
-            if (success) success.classList.add('show');
-          } else {
-            form.submit();
-          }
-        })
-        .catch(function () {
-          form.submit();
-        });
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = form.dataset.sending || 'Enviando…';
+      }
     });
   }
 
