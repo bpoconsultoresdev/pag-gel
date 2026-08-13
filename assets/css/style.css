@@ -29,8 +29,8 @@
   --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   margin: 0;
@@ -38,6 +38,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -365,7 +366,7 @@ footer.site { background: var(--bg-alt); border-top: 1px solid var(--border); pa
   padding: 12px 14px;
   color: var(--ink);
   font-family: var(--font);
-  font-size: 0.94rem;
+  font-size: 1rem;
   transition: border-color 0.15s ease;
 }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); }
@@ -726,4 +727,6 @@ footer.site { background: var(--bg-alt); border-top: 1px solid var(--border); pa
   .hero-panel { padding: 22px; }
   .trust-flex { flex-direction: column; align-items: flex-start; }
   .service-card, .pillar, .audience-card { padding: 22px 18px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .mobile-sticky-cta .sticky-info strong { font-size: 0.78rem; }
 }
