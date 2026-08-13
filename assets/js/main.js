@@ -84,8 +84,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var btn = form.querySelector('button[type="submit"]');
       if (btn) {
-        btn.disabled = true;
         btn.textContent = form.dataset.sending || 'Enviando…';
+        setTimeout(function () { btn.disabled = true; }, 50);
       }
     });
   }
