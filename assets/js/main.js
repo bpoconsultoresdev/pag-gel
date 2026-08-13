@@ -1,17 +1,51 @@
 // Gaming Expert Labs — interacciones base (sin dependencias externas)
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Menú móvil
+  // Menú móvil con backdrop
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.querySelector('nav.primary');
+  var backdrop = document.querySelector('.nav-backdrop');
+
+  if (!backdrop && nav) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'nav-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  function closeNav() {
+    if (nav) nav.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('active');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
+
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
-      nav.classList.toggle('open');
-      var expanded = nav.classList.contains('open');
-      toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      var isOpen = nav.classList.contains('open');
+      if (isOpen) {
+        closeNav();
+      } else {
+        nav.classList.add('open');
+        if (backdrop) backdrop.classList.add('active');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
     });
+
+    if (backdrop) backdrop.addEventListener('click', closeNav);
+
     nav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () { nav.classList.remove('open'); });
+      link.addEventListener('click', closeNav);
+    });
+  }
+
+  // Bar flotante fija en móviles (Sticky Bottom CTA)
+  var stickyCta = document.querySelector('.mobile-sticky-cta');
+  if (stickyCta) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 320) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
     });
   }
 
@@ -115,4 +149,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Filtrado de Pestañas en la Sección de Servicios
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var pillarGroups = document.querySelectorAll('.pillar-group');
+
+  tabBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = btn.dataset.filter;
+      tabBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      pillarGroups.forEach(function (group) {
+        if (filter === 'all' || group.dataset.category === filter) {
+          group.style.display = 'block';
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    });
+  });
+
 });
+

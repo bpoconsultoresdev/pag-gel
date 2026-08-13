@@ -41,16 +41,14 @@ El sitio no muestra contenido "de relleno" ni notas de pendiente: se retiró la 
 
 El formulario de contacto (ES/EN/PT) está conectado vía [FormSubmit](https://formsubmit.co) — un servicio gratuito de envío de formularios sin backend propio ni cuentas que crear. Incluye protección anti-spam (honeypot) y muestra confirmación o error en la misma página, sin redirigir al visitante.
 
-**Destino temporal:** mientras `info@gamingexpertlabs.com` no esté configurado, los envíos del formulario (`action` en `contacto.html`, las 3 versiones) apuntan a **diana.posada@gmail.com**. Cuando el correo corporativo esté listo, cambiar el `action` de las 3 páginas a `https://formsubmit.co/info@gamingexpertlabs.com` y repetir la activación (ver abajo).
+**Destino:** los envíos del formulario (`action` en `contacto.html`, las 3 versiones) apuntan directamente a **info@gamingexpertlabs.com**.
 
-**Importante — paso de activación pendiente:** la primera vez que alguien envíe el formulario, FormSubmit manda un correo de confirmación a la dirección de destino (hoy `diana.posada@gmail.com`) con un enlace que hay que abrir una sola vez para activar el envío. Revisa esa bandeja (incluida la carpeta de spam) y confirma la activación antes de dar el sitio por probado.
+**Importante — paso de activación de FormSubmit:** la primera vez que alguien envíe un mensaje desde el formulario web, FormSubmit mandará un correo de confirmación a `info@gamingexpertlabs.com` con un enlace que hay que hacer clic una sola vez para autorizar los envíos.
 
 ## Checklist antes de publicar
 
-- [x] **Activar el formulario**: activado en `diana.posada@gmail.com`. Envíos de prueba confirmados desde el sitio.
-- [ ] **Cambiar destino final**: cuando `info@gamingexpertlabs.com` esté operativo, actualizar el `action` del formulario en `es/`, `en/` y `pt/contacto.html` y reactivar con ese correo.
-- [ ] **Datos de contacto**: la ciudad "Bogotá, Colombia" es provisional — confirmar antes de publicar.
-- [ ] **Dominio y hosting**: definir proveedor de hosting/DNS para `gamingexpertlabs.com` y certificado SSL.
+- [x] **Activar el formulario**: actualizado a `info@gamingexpertlabs.com`.
+- [x] **Dominio y hosting**: configurado en Vercel y GoDaddy para `gamingexpertlabs.com`.
 - [ ] **Analítica**: no se incluyó ningún script de analítica (Google Analytics, Plausible, etc.) — agregar según la herramienta elegida.
 - [ ] **Páginas legales**: si se quiere Política de privacidad / Términos de uso, hay que redactarlas y volver a agregarlas al footer (se retiraron los enlaces vacíos).
 - [ ] **Recursos**: si más adelante se quiere sumar blog/noticias, se puede reincorporar esa sección con contenido real (hoy la página solo tiene FAQ).
