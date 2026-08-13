@@ -96,13 +96,16 @@ document.addEventListener('DOMContentLoaded', function () {
           if (!res.ok) throw new Error('request-failed');
           return res.json();
         })
-        .then(function () {
-          form.style.display = 'none';
-          if (success) success.classList.add('show');
+        .then(function (data) {
+          if (data && (data.success === 'true' || data.success === true)) {
+            form.style.display = 'none';
+            if (success) success.classList.add('show');
+          } else {
+            form.submit();
+          }
         })
         .catch(function () {
-          if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
-          if (errorBox) errorBox.classList.add('show');
+          form.submit();
         });
     });
   }
