@@ -120,35 +120,6 @@ document.addEventListener('DOMContentLoaded', function () {
     reveals.forEach(function (el) { el.classList.add('in'); });
   }
 
-  // Modal de Verificación de Certificados
-  var modal = document.getElementById('verify-modal');
-  var openBtns = document.querySelectorAll('.open-verify-modal');
-  var closeBtns = document.querySelectorAll('.verify-close, .verify-backdrop');
-  var verifyForm = document.getElementById('verify-form');
-  var verifyResult = document.getElementById('verify-result');
-
-  openBtns.forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-      e.preventDefault();
-      if (modal) modal.classList.add('active');
-    });
-  });
-
-  closeBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      if (modal) modal.classList.remove('active');
-    });
-  });
-
-  if (verifyForm) {
-    verifyForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (verifyResult) {
-        verifyResult.classList.add('show');
-      }
-    });
-  }
-
   // Filtrado de Pestañas en la Sección de Servicios
   var tabBtns = document.querySelectorAll('.tab-btn');
   var pillarGroups = document.querySelectorAll('.pillar-group');
