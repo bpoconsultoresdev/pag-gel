@@ -108,9 +108,15 @@ header.site {
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+header.site::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
 }
 .nav-row {
   display: flex;
@@ -157,6 +163,8 @@ nav.primary a:hover, nav.primary a.active { color: var(--ink); }
 }
 .lang-switch a.active { background: var(--ink); color: #fff; }
 .lang-switch a:hover:not(.active) { color: var(--ink); }
+
+.mobile-sticky-cta { display: none; }
 
 .nav-toggle {
   display: none;
