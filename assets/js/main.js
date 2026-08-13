@@ -63,31 +63,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Formulario de contacto — envío real vía FormSubmit
+  // Formulario de contacto — mensaje de éxito si la URL vuelve con ?enviado=1
   var form = document.getElementById('contact-form');
   var successBox = document.getElementById('form-success');
 
-  // Si la URL vuelve con ?enviado=1, mostrar el mensaje de éxito
   if (window.location.search.indexOf('enviado=1') !== -1 || window.location.search.indexOf('sent=1') !== -1) {
     if (form) form.style.display = 'none';
     if (successBox) successBox.classList.add('show');
-  }
-
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      // Honeypot anti-spam: si el campo oculto viene lleno, es un bot — no enviar.
-      var honey = form.querySelector('[name="_honey"]');
-      if (honey && honey.value) {
-        e.preventDefault();
-        return;
-      }
-
-      var btn = form.querySelector('button[type="submit"]');
-      if (btn) {
-        btn.textContent = form.dataset.sending || 'Enviando…';
-        setTimeout(function () { btn.disabled = true; }, 50);
-      }
-    });
   }
 
   // Revelado suave al hacer scroll
