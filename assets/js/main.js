@@ -38,10 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Bar flotante fija en móviles (Sticky Bottom CTA)
+  // Se oculta al llegar al footer para no superponerse con su contenido (logo/nombre duplicado)
   var stickyCta = document.querySelector('.mobile-sticky-cta');
+  var siteFooter = document.querySelector('footer.site');
   if (stickyCta) {
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 320) {
+      var nearFooter = siteFooter && siteFooter.getBoundingClientRect().top < window.innerHeight;
+      if (window.scrollY > 320 && !nearFooter) {
         stickyCta.classList.add('visible');
       } else {
         stickyCta.classList.remove('visible');
