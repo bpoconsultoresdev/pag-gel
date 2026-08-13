@@ -661,6 +661,7 @@ footer.site { background: var(--bg-alt); border-top: 1px solid var(--border); pa
   nav.primary a { font-size: 1.1rem; padding: 10px 0; min-height: 44px; display: flex; align-items: center; width: 100%; border-bottom: 1px solid var(--border); }
   .nav-toggle { display: flex; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; }
   .nav-right .lang-switch { display: none; }
+  .nav-right > a.btn-primary { display: none; }
   nav.primary .mobile-lang { display: flex; gap: 10px; margin-top: 14px; width: 100%; }
   nav.primary .mobile-lang a { min-height: 44px; min-width: 44px; justify-content: center; padding: 8px 16px; }
 
