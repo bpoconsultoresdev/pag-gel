@@ -1,0 +1,11 @@
+# IDE and assistant files
+.claude/
+.impeccable/
+.vercel/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Dependencies (if any added later)
+node_modules/

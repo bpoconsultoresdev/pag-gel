@@ -1,0 +1,12 @@
+<svg viewBox="0 0 180 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GEL">
+  <defs>
+    <filter id="gelMarkShadowR" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="2" dy="3" stdDeviation="2" flood-color="#000814" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <g filter="url(#gelMarkShadowR)">
+    <text x="90" y="112" text-anchor="middle" font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="108" letter-spacing="-3">
+      <tspan fill="#f4f6fb">G</tspan><tspan fill="#6fa0ff">E</tspan><tspan fill="#f4f6fb">L</tspan>
+    </text>
+  </g>
+</svg>
